@@ -10,6 +10,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.UUID;
+
 @RestController
 @RequestMapping("/api/v1/category")
 @RequiredArgsConstructor
@@ -23,9 +25,9 @@ public class CategoryController {
         return ResponseEntity.ok(categoriesPageable);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Category> getById(@PathVariable Long id) {
-        Category category = this.categoryService.getCategory(id);
+    @GetMapping("/{uuid}")
+    public ResponseEntity<Category> getById(@PathVariable UUID uuid) {
+        Category category = this.categoryService.getCategory(uuid);
 
         return ResponseEntity.ok(category);
     }
@@ -36,16 +38,16 @@ public class CategoryController {
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity updateCategory(@PathVariable Long id, @RequestBody CategoryRequestDTO categoryBody) {
-        this.categoryService.updateCategory(id, categoryBody);
+    @PutMapping("/{uuid}")
+    public ResponseEntity updateCategory(@PathVariable UUID uuid, @RequestBody CategoryRequestDTO categoryBody) {
+        this.categoryService.updateCategory(uuid, categoryBody);
 
         return ResponseEntity.noContent().build();
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity deleteCategory(@PathVariable Long id) {
-        this.categoryService.deleteCategory(id);
+    @DeleteMapping("/{uuid}")
+    public ResponseEntity deleteCategory(@PathVariable UUID uuid) {
+        this.categoryService.deleteCategory(uuid);
 
         return ResponseEntity.noContent().build();
     }

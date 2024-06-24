@@ -12,6 +12,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.UUID;
+
 @Service
 @RequiredArgsConstructor
 public class CategoryServiceImpl implements CategoryService {
@@ -32,15 +34,15 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public Category getCategory(Long id) {
-        return this.categoryRepository.findById(id)
+    public Category getCategory(UUID uuid) {
+        return this.categoryRepository.findByUuid(uuid)
                 .orElseThrow(() -> new RuntimeException("Category Not Found"));
     }
 
     @Transactional
     @Override
-    public void updateCategory(Long id, CategoryRequestDTO categoryRequest) {
-        Category categoryFound = this.getCategory(id);
+    public void updateCategory(UUID uuid, CategoryRequestDTO categoryRequest) {
+        Category categoryFound = this.getCategory(uuid);
 
         Category categoryToUpdate = categoryMapper.toCategory(categoryRequest);
 
@@ -52,8 +54,8 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public void deleteCategory(Long id) {
-        Category categoryToDelete = this.getCategory(id);
+    public void deleteCategory(UUID uuid) {
+        Category categoryToDelete = this.getCategory(uuid);
 
         this.categoryRepository.delete(categoryToDelete);
     }
