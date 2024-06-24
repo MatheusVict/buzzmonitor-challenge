@@ -20,10 +20,11 @@ import java.util.List;
 public class CategoryServiceImpl implements CategoryService {
 
     private final CategoryRepository categoryRepository;
+    private final CategoryMapper categoryMapper;
 
     @Override
     public void createCategory(CategoryRequestDTO categoryRequest) {
-        Category categoryToSave = CategoryMapper.INSTANCE.toCategory(categoryRequest);
+        Category categoryToSave = categoryMapper.toCategory(categoryRequest);
 
         this.categoryRepository.save(categoryToSave);
     }
@@ -44,14 +45,19 @@ public class CategoryServiceImpl implements CategoryService {
     public void updateCategory(Long id, CategoryRequestDTO categoryRequest) {
         Category categoryFound = this.getCategory(id);
 
-        Category categoryToUpdate = CategoryMapper.INSTANCE.toCategory(categoryRequest);
+        Category categoryToUpdate = categoryMapper.toCategory(categoryRequest);
 
+        categoryToUpdate.setId(categoryFound.getId());
+        categoryToUpdate.setCreatedAt(categoryFound.getCreatedAt());
         BeanUtils.copyProperties(categoryToUpdate, categoryFound);
+
         this.categoryRepository.save(categoryFound);
     }
 
     @Override
     public void deleteCategory(Long id) {
-        this.categoryRepository.deleteById(id);
+        Category categoryToDelete = this.getCategory(id);
+
+        this.categoryRepository.delete(categoryToDelete);
     }
 }
