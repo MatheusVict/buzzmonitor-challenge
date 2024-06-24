@@ -5,6 +5,7 @@ import br.com.buzzmonitor.book_e_commerce.domain.Order;
 import br.com.buzzmonitor.book_e_commerce.domain.OrderRepository;
 import br.com.buzzmonitor.book_e_commerce.domain.OrderStatus;
 import br.com.buzzmonitor.book_e_commerce.dto.order.OrderRequestDTO;
+import br.com.buzzmonitor.book_e_commerce.handler.exceptions.OrderNotFoundException;
 import br.com.buzzmonitor.book_e_commerce.mapper.BookMapper;
 import br.com.buzzmonitor.book_e_commerce.mapper.OrderMapper;
 import br.com.buzzmonitor.book_e_commerce.service.BookService;
@@ -43,7 +44,7 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public Order getOrderById(UUID uuid) {
         return orderRepository.findByOrderId(uuid)
-                .orElseThrow(() -> new RuntimeException("Order not found"));
+                .orElseThrow(() -> new OrderNotFoundException("Order"+ uuid +"not found"));
     }
 
     @Override

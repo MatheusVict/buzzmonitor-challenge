@@ -4,6 +4,7 @@ import br.com.buzzmonitor.book_e_commerce.domain.Book;
 import br.com.buzzmonitor.book_e_commerce.domain.Category;
 import br.com.buzzmonitor.book_e_commerce.dto.book.BookRequestDto;
 import br.com.buzzmonitor.book_e_commerce.dto.book.BookResponseDTO;
+import br.com.buzzmonitor.book_e_commerce.handler.exceptions.BookNotFoundExceptions;
 import br.com.buzzmonitor.book_e_commerce.mapper.BookMapper;
 import br.com.buzzmonitor.book_e_commerce.repository.BookRepository;
 import br.com.buzzmonitor.book_e_commerce.service.BookService;
@@ -63,7 +64,7 @@ public class BookServiceImpl implements BookService {
     @Override
     public Book getBookByUuid(UUID uuid) {
         return this.bookRepository.findBookByUuid(uuid)
-                .orElseThrow(() -> new RuntimeException("Book not found"));
+                .orElseThrow(() -> new BookNotFoundExceptions("Book not" + uuid + "found"));
     }
 
     @Transactional
