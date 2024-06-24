@@ -1,0 +1,1 @@
+CREATE INDEX idx_book_category_id ON book (category_id);
