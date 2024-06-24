@@ -26,7 +26,7 @@ class CategoryRepositoryTest {
     }
 
     @Test
-    @DisplayName("Find by UUID")
+    @DisplayName("Find by UUID successfully")
     void findByUuid() {
 
         UUID uuid = UUID.randomUUID();
