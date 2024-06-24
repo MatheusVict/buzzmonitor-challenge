@@ -2,7 +2,6 @@ package br.com.buzzmonitor.book_e_commerce.service.impl;
 
 import br.com.buzzmonitor.book_e_commerce.domain.Category;
 import br.com.buzzmonitor.book_e_commerce.dto.category.CategoryRequestDTO;
-import br.com.buzzmonitor.book_e_commerce.dto.category.CategoryResponseDTO;
 import br.com.buzzmonitor.book_e_commerce.mapper.CategoryMapper;
 import br.com.buzzmonitor.book_e_commerce.repository.CategoryRepository;
 import br.com.buzzmonitor.book_e_commerce.service.CategoryService;
@@ -12,8 +11,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor
