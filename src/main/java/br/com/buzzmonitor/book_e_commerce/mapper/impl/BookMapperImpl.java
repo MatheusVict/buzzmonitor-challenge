@@ -43,4 +43,16 @@ public class BookMapperImpl implements BookMapper {
                 book.getUpdatedAt()
         );
     }
+
+    @Override
+    public BookRequestDto toRequestDto(Book book) {
+        return new BookRequestDto(
+                book.getTitle(),
+                book.getDescription(),
+                book.getAuthor(),
+                book.getPublicationDate(),
+                book.getStock(),
+                book.getCategory().getUuid()
+        );
+    }
 }

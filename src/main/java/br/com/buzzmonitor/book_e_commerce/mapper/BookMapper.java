@@ -8,4 +8,5 @@ public interface BookMapper {
     Book toEntity(BookRequestDto bookRequestDto);
 
     BookResponseDTO toDto(Book book);
+    BookRequestDto toRequestDto(Book book);
 }
