@@ -37,7 +37,7 @@ public class BookMocks {
                 );
     }
 
-    public static Book returnValidBookToCreate(Category category) {
+    public static Book returnValidBookToCreate() {
         return BookEntityFactory.
                 INSTANCE.
                 createBook(
@@ -47,6 +47,20 @@ public class BookMocks {
                         publicationDate,
                         stock
                 );
+    }
+
+    public static Book returnValidBookToCreate(Category category) {
+        Book bookToCreate = BookEntityFactory.
+                INSTANCE.
+                createBook(
+                        title,
+                        description,
+                        author,
+                        publicationDate,
+                        stock
+                );
+        bookToCreate.setCategory(category);
+        return bookToCreate;
     }
 
     public static BookRequestDto returnValidBookRequestDto() {

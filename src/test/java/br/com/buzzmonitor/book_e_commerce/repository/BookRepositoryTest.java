@@ -37,6 +37,7 @@ class BookRepositoryTest {
         Category categoryCreated = this.categoryRepository.save(validCategory);
         Book book = BookMocks.returnValidBookToCreate(categoryCreated);
 
+
         Book bookSaved = bookRepository.save(book);
         uuid = bookSaved.getUuid();
 
@@ -50,20 +51,20 @@ class BookRepositoryTest {
     @Test
     @DisplayName("Find all by category name, successfully")
     void findAllByCategoryName() {
-        String categoryName = CategoryMocks.returnValidCategory().getName();
+        String categoryName = validCategory.getName();
         List<Book> allByCategoryName = bookRepository.findAllByCategoryName(categoryName);
 
-        assertTrue(allByCategoryName.size() > 0);
+        assertFalse(allByCategoryName.isEmpty());
         assertEquals(categoryName, allByCategoryName.get(0).getCategory().getName());
     }
 
     @Test
     @DisplayName("Find all by title, successfully")
     void findAllByTitle() {
-        String title = "Title";
+        String title = BookMocks.returnValidBookToCreate().getTitle();
         List<Book> allByTitle = bookRepository.findAllByTitle(title);
 
-        assertTrue(allByTitle.size() > 0);
+        assertFalse(allByTitle.isEmpty());
         assertEquals(title, allByTitle.get(0).getTitle());
     }
 
