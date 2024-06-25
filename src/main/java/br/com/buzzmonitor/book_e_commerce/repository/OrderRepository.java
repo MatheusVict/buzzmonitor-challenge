@@ -1,5 +1,6 @@
-package br.com.buzzmonitor.book_e_commerce.domain;
+package br.com.buzzmonitor.book_e_commerce.repository;
 
+import br.com.buzzmonitor.book_e_commerce.domain.Order;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

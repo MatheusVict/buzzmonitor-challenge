@@ -2,7 +2,7 @@ package br.com.buzzmonitor.book_e_commerce.service.impl;
 
 import br.com.buzzmonitor.book_e_commerce.domain.Book;
 import br.com.buzzmonitor.book_e_commerce.domain.Order;
-import br.com.buzzmonitor.book_e_commerce.domain.OrderRepository;
+import br.com.buzzmonitor.book_e_commerce.repository.OrderRepository;
 import br.com.buzzmonitor.book_e_commerce.domain.OrderStatus;
 import br.com.buzzmonitor.book_e_commerce.dto.order.OrderRequestDTO;
 import br.com.buzzmonitor.book_e_commerce.handler.exceptions.OrderNotFoundException;
