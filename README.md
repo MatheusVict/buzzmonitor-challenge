@@ -50,7 +50,7 @@ spring:
 ./mvnw spring-boot:run -Dspring.profiles.active=prod
 ```
 
-Você será capaz de ver o projeto rodando em [http://localhost:8080](http://localhost:8080)
+Você será capaz de ver o projeto rodando em [http://localhost:8080](http://localhost:8080) ou abra na documentação em [http://localhost:8080/swagger-ui/index.html#/](http://localhost:8080/swagger-ui/index.html#/)
 
 ## Como rodar os testes
 
@@ -242,7 +242,7 @@ Body:
 ```DELETE``` /order/{uuid}
 ```Status 204 No Content```
 
-## ⚠️ Problemas enfrentados
+## ⚠ Problemas enfrentados
 
 ### Erro ao subir o projeto sem o docker:
 
@@ -256,7 +256,7 @@ Flyway da erro ao executar
 
 * verifique se dentro do banco que você configurou já não existe as tableas: "category", "book" e "order".
 
-## ⏭️ Próximos passos
+## ⏭ Próximos passos
 
 Adicionar tratamento de excessões
 Swagger
