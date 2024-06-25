@@ -30,11 +30,13 @@ class BookRepositoryTest {
 
     private final Category validCategory = CategoryMocks.returnValidCategory();
     private UUID uuid = UUID.randomUUID();
+    private Category categorySaved;
 
     @BeforeEach
     void setUp() {
 
         Category categoryCreated = this.categoryRepository.save(validCategory);
+        categorySaved = categoryCreated;
         Book book = BookMocks.returnValidBookToCreate(categoryCreated);
 
 
@@ -72,7 +74,7 @@ class BookRepositoryTest {
     @DisplayName("Find book by UUID, successfully")
     void findBookByUuid() {
         UUID uuid = this.uuid;
-        Book book = BookMocks.returnValidBookToCreate(validCategory);
+        Book book = BookMocks.returnValidBookToCreate(this.categorySaved);
         bookRepository.save(book);
 
         Book bookByUuid = bookRepository.findBookByUuid(uuid).orElse(null);
