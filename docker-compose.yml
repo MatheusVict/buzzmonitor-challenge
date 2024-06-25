@@ -38,4 +38,4 @@ services:
 networks:
   default:
     driver: bridge
-    name: spring-redis
+    name: bookstore
